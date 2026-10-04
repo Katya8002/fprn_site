@@ -19,7 +19,13 @@
       <p><strong>Мови навчання:</strong> {{ p.languages }}</p>
       <p><strong>Кількість місць:</strong> {{ p.seats }}</p>
       <p><strong>Дедлайн подачі:</strong> {{ p.deadline|date:"d.m.Y" }}</p>
-      <p>{{ p.description }}</p>
+      <p>
+        {% if p.is_open %}
+          <span class="status status-open">Прийом триває</span>
+        {% else %}
+          <span class="status status-closed">Прийом завершено</span>
+        {% endif %}
+      </p>
     </article>
   {% empty %}
     <p>Програм обміну поки немає.</p>
