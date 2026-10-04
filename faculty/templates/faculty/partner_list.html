@@ -1,0 +1,17 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Партнери{% endblock %}
+
+{% block content %}
+  <h2>Партнери та міжнародна співпраця</h2>
+  <ul>
+    {% for p in partners %}
+      <li>
+        {{ p.name }}{% if p.country %} ({{ p.country }}){% endif %}
+        <br><small>Кафедри:
+          {% for d in p.departments.all %}{{ d.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+        </small>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

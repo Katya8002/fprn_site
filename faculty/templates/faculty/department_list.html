@@ -1,0 +1,20 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Кафедри{% endblock %}
+
+{% block content %}
+  <h2>Кафедри</h2>
+  {% for d in departments %}
+    <article>
+      <h3><a href="{% url 'faculty:department_detail' d.pk %}">{{ d.name }}</a></h3>
+      <p><strong>Завідувач:</strong> {% if d.head %}{{ d.head }}{% else %}—{% endif %}</p>
+      <p><strong>Випускова кафедра для спеціальностей:</strong>
+        {% for p in d.programs.all %}
+          <a href="{% url 'faculty:program_detail' p.pk %}">{{ p.name }}</a>{% if not forloop.last %}, {% endif %}
+        {% empty %}—{% endfor %}
+      </p>
+    </article>
+  {% empty %}
+    <p>Кафедр поки немає.</p>
+  {% endfor %}
+{% endblock %}

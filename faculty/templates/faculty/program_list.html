@@ -1,0 +1,23 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Спеціальності{% endblock %}
+
+{% block content %}
+  <h2>Спеціальності</h2>
+  {% for p in programs %}
+    <article>
+      <h3>
+        <a href="{% url 'faculty:program_detail' p.pk %}">{{ p.name }}</a>
+        {% if p.specialty_code %}<small>(код {{ p.specialty_code }})</small>{% endif %}
+      </h3>
+      <p>{{ p.description|truncatewords:50 }}</p>
+      <p>
+        <strong>Координатор набору:</strong>
+        {% if p.coordinator_name %}{{ p.coordinator_name }}{% else %}—{% endif %}
+        {% if p.coordinator_contact %}<br><strong>Контакт:</strong> {{ p.coordinator_contact }}{% endif %}
+      </p>
+    </article>
+  {% empty %}
+    <p>Спеціальностей поки немає.</p>
+  {% endfor %}
+{% endblock %}

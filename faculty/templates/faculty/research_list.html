@@ -1,0 +1,15 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Наука{% endblock %}
+
+{% block content %}
+  <h2>Наукові центри та лабораторії</h2>
+  <ul>
+    {% for u in units %}
+      <li>
+        {{ u.name }} ({{ u.get_unit_type_display }})
+        {% if u.head %}<br>Керівник: {{ u.head.full_name }}{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
