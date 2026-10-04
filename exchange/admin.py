@@ -4,4 +4,5 @@ from .models import ExchangeProgram
 
 @admin.register(ExchangeProgram)
 class ExchangeProgramAdmin(admin.ModelAdmin):
-    list_display = ("university", "languages", "seats", "deadline")
+    list_display = ("university", "country", "languages", "seats", "deadline")
+    list_filter = ("country",)

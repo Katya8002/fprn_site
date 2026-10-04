@@ -4,9 +4,18 @@
 
 {% block content %}
   <h2>Програми академічного обміну</h2>
+
+  <p>
+    Країна:
+    <a href="{% url 'exchange:exchange_list' %}">усі</a>
+    {% for c in countries %}
+      | <a href="?country={{ c|urlencode }}"{% if c == selected %} style="font-weight:bold"{% endif %}>{{ c }}</a>
+    {% endfor %}
+  </p>
+
   {% for p in programs %}
     <article>
-      <h3>{{ p.university }}</h3>
+      <h3>{{ p.university }} <small>({{ p.country }})</small></h3>
       <p><strong>Мови навчання:</strong> {{ p.languages }}</p>
       <p><strong>Кількість місць:</strong> {{ p.seats }}</p>
       <p><strong>Дедлайн подачі:</strong> {{ p.deadline|date:"d.m.Y" }}</p>
