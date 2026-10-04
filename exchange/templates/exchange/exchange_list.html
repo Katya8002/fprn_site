@@ -1,0 +1,18 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Академічний обмін{% endblock %}
+
+{% block content %}
+  <h2>Програми академічного обміну</h2>
+  {% for p in programs %}
+    <article>
+      <h3>{{ p.university }}</h3>
+      <p><strong>Мови навчання:</strong> {{ p.languages }}</p>
+      <p><strong>Кількість місць:</strong> {{ p.seats }}</p>
+      <p><strong>Дедлайн подачі:</strong> {{ p.deadline|date:"d.m.Y" }}</p>
+      <p>{{ p.description }}</p>
+    </article>
+  {% empty %}
+    <p>Програм обміну поки немає.</p>
+  {% endfor %}
+{% endblock %}

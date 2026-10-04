@@ -4,7 +4,6 @@ from .models import (
     Partner, NewsItem, StudentOrganization, HomePage,
 )
 
-
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ("name", "head")
