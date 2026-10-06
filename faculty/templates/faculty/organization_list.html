@@ -1,0 +1,14 @@
+{% extends "faculty/base.html" %}
+
+{% block title %}Студентам{% endblock %}
+
+{% block content %}
+  <h2>Студентська активність</h2>
+  <ul>
+    {% for o in organizations %}
+      <li>
+        {% if o.url %}<a href="{{ o.url }}">{{ o.name }}</a>{% else %}{{ o.name }}{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
