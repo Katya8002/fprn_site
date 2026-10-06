@@ -48,6 +48,11 @@ class Migration(migrations.Migration):
             name="seats_is_maximum",
             field=models.BooleanField(default=False),
         ),
+        migrations.AlterField(
+            model_name="exchangeprogram",
+            name="seats",
+            field=models.CharField(max_length=50, null=True),
+        ),
         migrations.RunPython(forwards, backwards),
         migrations.RemoveField(
             model_name="exchangeprogram",

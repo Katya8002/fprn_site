@@ -20,14 +20,12 @@ VALUES
 
 DELETE_SQL = """
 DELETE FROM exchange_exchangeprogram
-WHERE university IN (
-    'Uniwersytet Warszawski, Польща',
-    'KU Leuven (Бельгія)',
-    'Vilnius University, Литва',
-    'Uniwersytet Jagielloński, Польща',
-    'University of Tartu - Естонія',
-    'Masaryk University, Чехія'
-);
+WHERE university LIKE 'Uniwersytet Warszawski%'
+   OR university LIKE 'KU Leuven%'
+   OR university LIKE 'Vilnius University%'
+   OR university LIKE 'Uniwersytet Jagielloński%'
+   OR university LIKE 'University of Tartu%'
+   OR university LIKE 'Masaryk University%';
 """
 
 
